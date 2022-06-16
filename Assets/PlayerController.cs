@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             this._onGround = true;
         } else if (other.gameObject.tag == "Obstacle") {
             Debug.Log("Hit");
-            BackgroundScrolling.scrollSpeed = 0; 
+            //BackgroundScrolling.scrollSpeed = 0; 
         }
     }
 
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
             this._onGround = false;
         } else if (other.gameObject.tag == "Obstacle") {
             Debug.Log("HitOUT");
-            BackgroundScrolling.scrollSpeed = 0.1f; 
+           // BackgroundScrolling.scrollSpeed = 0.1f; 
         }
     }
 }

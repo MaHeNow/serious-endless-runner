@@ -25,9 +25,9 @@ public class BackgroundScrolling : MonoBehaviour
           Vector2 offset;
         if(x != 0) {
             offset = new Vector2 (x, 0);
-            cameraOffset = new Vector2 (x, 2.0f);
+            //cameraOffset = new Vector2 (x, 2.0f);
         } else {
-offset = cameraOffset;
+            offset = cameraOffset;
         }
         renderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
     }
