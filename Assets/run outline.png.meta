@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -304,6 +305,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      run outline_5: 4302846473265588651
+      run outline_4: -550417657112035466
+      run outline_1: -3129564553707766207
+      run outline_0: 2083552568716455190
+      run outline_3: 1591307447348739279
+      run outline_2: 6538696883118038910
+      run outline_6: -8369161819808253775
+      run outline_7: -9029005984563311700
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
