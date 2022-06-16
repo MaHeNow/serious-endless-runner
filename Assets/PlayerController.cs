@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground") { 
             this._onGround = true;
+        } else if (other.gameObject.tag == "Obstacle") {
+            Debug.Log("Hit");
         }
     }
 
