@@ -5,16 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public Rigidbody2D Transform;
+    private Rigidbody2D _rigidbody;
     public float MovementSpeed = 5;
 
     void Start()
     {
-        Transform = GetComponent<Rigidbody2D>();
+        this._rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        Transform.velocity = new Vector2(MovementSpeed, 0);
+        this._rigidbody.velocity = new Vector2(MovementSpeed, 0);
     }
 }
