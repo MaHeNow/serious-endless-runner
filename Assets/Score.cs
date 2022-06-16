@@ -14,4 +14,6 @@ public class Score : MonoBehaviour
     {
         this.score = player.position.x * scoreMultiplier;
     }
+
+    public float GetScore() => score;
 }
