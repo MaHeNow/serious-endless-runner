@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
 
     public float movementSpeed = 5;
     public float jumpSpeed = 35f;
+
+    public delegate void HitObstacle();
+    public static event HitObstacle OnHitObstacle;
 
     private Rigidbody2D _rigidbody;
     private float _jumpForce;
@@ -36,9 +38,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Ground") { 
             this._onGround = true;
         } else if (other.gameObject.tag == "Obstacle") {
-            Debug.Log("Hit");
-            SceneManager.LoadScene(2);
-            //BackgroundScrolling.scrollSpeed = 0; 
+            OnHitObstacle();
         }
     }
 
