@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
             this._onGround = true;
         } else if (other.gameObject.tag == "Obstacle") {
             Debug.Log("Hit");
+            SceneManager.LoadScene(2);
             //BackgroundScrolling.scrollSpeed = 0; 
         }
     }
