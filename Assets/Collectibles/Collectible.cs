@@ -7,21 +7,14 @@ public class Collectible : MonoBehaviour
 
     
     public int points = 40;
-    public delegate void GotTouched(int score);
-    public static event GotTouched OnGotTouched;
+    public delegate void GotTouchedByPlayer(int score);
+    public static event GotTouchedByPlayer OnGotTouchedByPlayer;
 
-    private BoxCollider2D _bc;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        this._bc = GetComponent<BoxCollider2D>();
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player") {
-            OnGotTouched(points);
+            OnGotTouchedByPlayer(points);
             Destroy(gameObject);
         }
     }

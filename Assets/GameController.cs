@@ -11,18 +11,19 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerController.OnHitObstacle += OnPlayerHitObstacle;
-        Collectible.OnGotTouched += IncrementPoints;
-    }
-
-    void OnPlayerHitObstacle() {
-        Globals.score = this.score.score;
-        SceneManager.LoadScene(2);
+        Collectible.OnGotTouchedByPlayer += IncrementPoints;
+        Obstacle.OnGotTouchedByPlayer += EndGame;
     }
 
     void IncrementPoints(int by)
     {
         score.score += (float) by;
+    }
+
+    void EndGame()
+    {
+        Globals.score = this.score.score;
+        SceneManager.LoadScene(2);
     }
 
 }
