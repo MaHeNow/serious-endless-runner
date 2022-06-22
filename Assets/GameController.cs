@@ -12,11 +12,17 @@ public class GameController : MonoBehaviour
     void Start()
     {
         PlayerController.OnHitObstacle += OnPlayerHitObstacle;
+        Collectible.OnGotTouched += IncrementPoints;
     }
 
     void OnPlayerHitObstacle() {
         Globals.score = this.score.score;
         SceneManager.LoadScene(2);
+    }
+
+    void IncrementPoints(int by)
+    {
+        score.score += (float) by;
     }
 
 }

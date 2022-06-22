@@ -5,15 +5,22 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
 
+    private float _runningScore;
+    private float _collectibleScore;
+
     public Transform player;
     public float scoreMultiplier = 1;
-    public float score;
+    public float score
+    {
+        get => _runningScore + _collectibleScore;
+        set => _collectibleScore = value;
+    }
+    
 
     // Update is called once per frame
     void Update()
     {
-        this.score = player.position.x * scoreMultiplier;
+        this._runningScore = player.position.x * scoreMultiplier;
     }
 
-    public float GetScore() => score;
 }
