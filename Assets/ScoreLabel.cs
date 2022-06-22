@@ -6,7 +6,7 @@ using UnityEngine;
 public class ScoreLabel : MonoBehaviour
 {
 
-    public Score score;
+    public ScoreManager score;
     private Text text;
 
     // Start is called before the first frame update
