@@ -6,10 +6,15 @@ public class CameraFollow : MonoBehaviour
 {
 
     public Transform followTransform;
-    public Vector2 cameraOffset = new Vector2(4.0f, 2.0f);
+    private Vector2 _cameraOffset;
+
+    void Start()
+    {
+        this._cameraOffset = transform.position;
+    }
 
     void Update()
     {
-        this.transform.position = new Vector3(followTransform.position.x + cameraOffset.x , cameraOffset.y, this.transform.position.z);
+        this.transform.position = new Vector3(followTransform.position.x + this._cameraOffset.x , this._cameraOffset.y, this.transform.position.z);
     }
 }
