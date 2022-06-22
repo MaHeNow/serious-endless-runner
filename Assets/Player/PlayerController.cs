@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         this._rigidbody = GetComponent<Rigidbody2D>();
-        this._jumpForce = Mathf.Sqrt(jumpSpeed * -3 * (Physics2D.gravity.y * _rigidbody.gravityScale)) /2; 
+        this._jumpForce = Mathf.Sqrt(jumpSpeed * -3 * (Physics2D.gravity.y * _rigidbody.gravityScale)) * (float)0.5; 
     }
 
     void FixedUpdate()
