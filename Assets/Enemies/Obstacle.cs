@@ -7,18 +7,27 @@ public class Obstacle : MonoBehaviour
 
     public delegate void GotTouchedByPlayer();
     public static event GotTouchedByPlayer OnGotTouchedByPlayer;
+    public AudioSource collisionSound;
 
+    void Start() {
+        collisionSound = GetComponent<AudioSource>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player") {
+
+            collisionSound.Play();
             OnGotTouchedByPlayer();
+            
         }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player") {
+            collisionSound.Play();
             OnGotTouchedByPlayer();
+            
         }
     }
 }
