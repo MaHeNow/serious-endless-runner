@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     public float scoreMultiplier = 1;
     public float score
     {
+        // TODO: Check this 
         get => _runningScore + _collectibleScore;
         set => _collectibleScore = value;
     }

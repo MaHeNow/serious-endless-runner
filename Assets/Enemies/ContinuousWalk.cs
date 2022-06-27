@@ -5,13 +5,12 @@ using UnityEngine;
 public class ContinuousWalk : MonoBehaviour
 {
 
-    public float movementSpeed = 5;
+    public float Speed = 1;
 
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(-movementSpeed * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(-Speed * Time.deltaTime, 0, 0));
     }
 
 }

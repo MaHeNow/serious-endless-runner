@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+
     public float movementSpeed = 5;
     public float jumpSpeed = 35f;
 
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private float _jumpForce;
     private bool _onGround;
+    private bool _inInteractible => _currentInteractable != null;
+    private Interactable _currentInteractable;
 
     void Start()
     {
@@ -26,22 +29,68 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && this._onGround) {
-            this._rigidbody.AddForce(new Vector2(0, this._jumpForce), ForceMode2D.Impulse);
-        } 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (_onGround)
+            {
+                if (_inInteractible)
+                {
+                    _currentInteractable.Load();
+                }
+                else
+                {
+                    _rigidbody.AddForce(new Vector2(0, this._jumpForce), ForceMode2D.Impulse);
+                }
+            } 
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (_inInteractible)
+            {
+                _currentInteractable.Trigger();
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Ground") { 
-            this._onGround = true;
+        if (other.gameObject.tag == "Ground")
+        { 
+            _onGround = true;
+        }
+        else if (other.gameObject.tag == "Interactable")
+        {
+            _currentInteractable = other.gameObject.GetComponent<Interactable>();
         }
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Ground") { 
-            this._onGround = false;
+        if (other.gameObject.tag == "Ground")
+        {
+            _onGround = false;
+        }
+        else if (other.gameObject.tag == "Interactable")
+        {
+            _currentInteractable = null;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Interactable")
+        {
+            _currentInteractable = other.gameObject.GetComponent<Interactable>();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Interactable")
+        {
+            _currentInteractable = null;
+        }
+    }
+
 }
