@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 
     public float movementSpeed = 5;
     public float jumpSpeed = 35f;
-
+    public AudioSource jumpsound;
     public delegate void HitObstacle();
     public static event HitObstacle OnHitObstacle;
 
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         this._rigidbody = GetComponent<Rigidbody2D>();
         this._jumpForce = Mathf.Sqrt(jumpSpeed * -3 * (Physics2D.gravity.y * _rigidbody.gravityScale)) * (float)0.5; 
+        jumpsound = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
             if (this._onGround|| doubleJump)
             {
                 this._rigidbody.AddForce(new Vector2(0, this._jumpForce), ForceMode2D.Impulse);
-
+                //jumpsound.Play();
                 doubleJump = !doubleJump;
             }
         }
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
          if (Input.GetKeyDown(KeyCode.Space) )
         {
            this._rigidbody.AddForce(new Vector2(0, this._jumpForce), ForceMode2D.Impulse);
+           jumpsound.Play();
         }
 
 
