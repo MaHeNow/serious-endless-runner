@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
         {
             if (_onGround)
             {
-                if (_inInteractible)
+                Debug.Log("On Ground");
+                if (_inInteractible && !_currentInteractable.Used)
                 {
                     _currentInteractable.Load();
                 }
@@ -74,6 +75,14 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.tag == "Interactable")
         {
             _currentInteractable = null;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        { 
+            _onGround = true;
         }
     }
 

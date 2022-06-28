@@ -17,6 +17,7 @@ public class Plant : Interactable
 
     public override void Activate()
     {
+        base.Activate();
         Instantiate(BulletPrefab, _bulletStartingPosition.transform.position, Quaternion.identity);
     }
 }
