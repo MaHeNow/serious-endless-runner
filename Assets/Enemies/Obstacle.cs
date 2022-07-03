@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 
+    public GameObject WarningSign;
     public delegate void GotTouchedByPlayer();
     public static event GotTouchedByPlayer OnGotTouchedByPlayer;
 

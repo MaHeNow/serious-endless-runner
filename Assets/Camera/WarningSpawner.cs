@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WarningSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject _warningSignPrefab;
     Transform _warningSignOrigin;
 
     void Start()
@@ -16,16 +15,20 @@ public class WarningSpawner : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
-            SpawnWarningSign(other.gameObject.transform.position.y);
+            GameObject warningSign = other.gameObject.GetComponent<Obstacle>().WarningSign;
+            SpawnWarningSign(other.gameObject.transform.position.y, warningSign);
         }
     }
 
-    void SpawnWarningSign(float atHeight)
+    void SpawnWarningSign(float atHeight, GameObject sign)
     {
-        Vector3 spawnPosition = _warningSignOrigin.position;
-        spawnPosition.y = atHeight;
-        
-        GameObject warningSign = Instantiate(_warningSignPrefab, spawnPosition, Quaternion.identity);
-        warningSign.transform.parent = transform;
+        if (sign != null)
+        {
+            Vector3 spawnPosition = _warningSignOrigin.position;
+            spawnPosition.y = atHeight;
+            
+            GameObject warningSign = Instantiate(sign, spawnPosition, Quaternion.identity);
+            warningSign.transform.parent = transform;
+        }
     }
 }
