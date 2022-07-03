@@ -27,6 +27,5 @@ public class WarningSpawner : MonoBehaviour
         
         GameObject warningSign = Instantiate(_warningSignPrefab, spawnPosition, Quaternion.identity);
         warningSign.transform.parent = transform;
-
     }
 }
