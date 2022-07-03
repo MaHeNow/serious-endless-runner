@@ -6,16 +6,16 @@ public class Trunk : MonoBehaviour
 {
 
     [SerializeField] GameObject _projectilePrefab;
-    PlayerDetector _playerDetector;
+    Detector _playerDetector;
     Transform _projectileOrigin;
     bool _shot = false;
 
     void Start()
     {
-        _playerDetector = GameObject.Find("PlayerDetector").GetComponent<PlayerDetector>();
+        _playerDetector = GameObject.Find("PlayerDetector").GetComponent<Detector>();
         _projectileOrigin = GameObject.Find("ProjectileOrigin").transform;
 
-        _playerDetector.OnDetectedPlayer += ShootProjectile;
+        _playerDetector.OnDetected += ShootProjectile;
     }
 
     void ShootProjectile()
