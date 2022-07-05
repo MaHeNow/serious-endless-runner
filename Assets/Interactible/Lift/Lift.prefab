@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6818764283401689982}
   - component: {fileID: 6818764283401689983}
   - component: {fileID: 6818764283401689953}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Platform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1691,7 +1691,7 @@ GameObject:
   - component: {fileID: 6818764283474722790}
   - component: {fileID: 6818764283474722795}
   - component: {fileID: 6818764283474722792}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lift
   m_TagString: Interactable
   m_Icon: {fileID: 0}

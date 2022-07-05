@@ -17,14 +17,14 @@ TagManager:
   - UI
   - 
   - 
-  - background
+  - Background
   - 
   - 
-  - player
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Terrain
+  - Obstacle
+  - Interactable
+  - Collectable
   - 
   - 
   - 

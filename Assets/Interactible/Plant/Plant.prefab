@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6622540518068550710}
   - component: {fileID: 6622540518068550709}
   - component: {fileID: 6622540518068550711}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Plant
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6622540518167774123}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BulletOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
