@@ -12,8 +12,8 @@ public class Trunk : MonoBehaviour
 
     void Start()
     {
-        _playerDetector = GameObject.Find("PlayerDetector").GetComponent<Detector>();
-        _projectileOrigin = GameObject.Find("ProjectileOrigin").transform;
+        _playerDetector = transform.Find("PlayerDetector").GetComponent<Detector>();
+        _projectileOrigin = transform.Find("ProjectileOrigin").transform;
 
         _playerDetector.OnDetected += ShootProjectile;
     }

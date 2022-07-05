@@ -8,7 +8,7 @@ public class WarningSpawner : MonoBehaviour
 
     void Start()
     {
-        _warningSignOrigin = GameObject.Find("WarningSignOrigin").transform;
+        _warningSignOrigin = transform.Find("WarningSignOrigin").transform;
     }
 
     void OnTriggerEnter2D(Collider2D other)
