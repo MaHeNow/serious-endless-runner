@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
         {
             if (_onGround)
             {
-                Debug.Log("On Ground");
                 if (_inInteractible && !_currentInteractable.Used)
                 {
                     _currentInteractable.Load();
