@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2531236055277631651}
   - component: {fileID: 3326124173047442987}
   - component: {fileID: 3326124173047442988}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PlayerDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3326124174399164918}
   - component: {fileID: 3326124174399164917}
   - component: {fileID: 3326124174399164916}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Trunk
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3326124174534712562}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ProjectileOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
