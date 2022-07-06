@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     {
         Collectible.OnGotTouchedByPlayer += IncrementCollectibleScore;
         Obstacle.OnGotTouchedByPlayer += EndGame;
+        GoalDetection.OnGotTouchedByPlayer += EndGameWin;
     }
 
     void IncrementCollectibleScore(int by)
@@ -26,4 +27,9 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    void EndGameWin()
+    {
+        Globals.score = this.ScoreManager.score;
+        SceneManager.LoadScene(3);
+    }
 }
