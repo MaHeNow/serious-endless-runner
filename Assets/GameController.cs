@@ -6,23 +6,23 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
 
-    public ScoreManager score;
+    public ScoreManager ScoreManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        Collectible.OnGotTouchedByPlayer += IncrementPoints;
+        Collectible.OnGotTouchedByPlayer += IncrementCollectibleScore;
         Obstacle.OnGotTouchedByPlayer += EndGame;
     }
 
-    void IncrementPoints(int by)
+    void IncrementCollectibleScore(int by)
     {
-        score.score += (float) by;
+        ScoreManager.CollectibleScore += (float) by;
     }
 
     void EndGame()
     {
-        Globals.score = this.score.score;
+        Globals.score = this.ScoreManager.score;
         SceneManager.LoadScene(2);
     }
 
