@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomWalk : MonoBehaviour
+public class RandomWalk : Walk
 {
 
     public float movementSpeed = 2;
@@ -20,12 +20,15 @@ public class RandomWalk : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(-movementSpeed * Time.deltaTime, 0, 0));
+        if (moving)
+        {
+            transform.Translate(new Vector3(-movementSpeed * Time.deltaTime, 0, 0));
 
-        this._turningTime -= Time.deltaTime;
-        if (this._turningTime < 0) {
-            SetRandomTurningTime();
-            TurnAround();
+            this._turningTime -= Time.deltaTime;
+            if (this._turningTime < 0) {
+                SetRandomTurningTime();
+                TurnAround();
+            }
         }
     }
 

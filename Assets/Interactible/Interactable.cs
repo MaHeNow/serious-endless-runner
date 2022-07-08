@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour
     public bool Used = false;
 
     private bool _loading;
+    [SerializeField] AudioSource loadingSound;
 
 
     void Start() {}
@@ -54,11 +55,13 @@ public class Interactable : MonoBehaviour
         if (!Used)
         {
             _loading = true;
+            loadingSound.Play();
         }
     }
 
     public void Trigger()
     {
+        loadingSound.Stop();
         _loading = false;
         if (CurrentLoadingTime > LoadingTime && !Used)
         {

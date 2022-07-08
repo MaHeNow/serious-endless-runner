@@ -8,6 +8,7 @@ public class Plant : Interactable
     public GameObject BulletPrefab;
 
     private Transform _bulletStartingPosition;
+    [SerializeField] private AudioSource shootSound;
 
 
     void Start()
@@ -18,6 +19,7 @@ public class Plant : Interactable
     public override void Activate()
     {
         base.Activate();
+        shootSound.Play();
         Instantiate(BulletPrefab, _bulletStartingPosition.transform.position, Quaternion.identity);
     }
 }

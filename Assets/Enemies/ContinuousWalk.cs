@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContinuousWalk : MonoBehaviour
+public class ContinuousWalk : Walk
 {
 
     public float Speed = 1;
@@ -10,7 +10,10 @@ public class ContinuousWalk : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(-Speed * Time.deltaTime, 0, 0));
+        if (moving)
+        {
+            transform.Translate(new Vector3(-Speed * Time.deltaTime, 0, 0));
+        }
     }
 
 }
