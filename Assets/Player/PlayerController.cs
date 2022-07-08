@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-
-    public float movementSpeed = 5;
-    public float jumpSpeed = 35f;
+    public float movementSpeed = 1;
+    public float jumpSpeed = 1f;
+    public float consecutiveJumpSpeedMultiplier = 1f;
 
 
     private Rigidbody2D _rigidbody;
@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private bool _onGround;
     private bool _inInteractible => _currentInteractable != null;
     private Interactable _currentInteractable;
+    [SerializeField] int MaxJumps = 2;
+    private int currentJumps = 0;
+    private bool justJumped = false;
+    [SerializeField] private GameObject groundRay;
     [SerializeField] private AudioSource jumpSound;
     [SerializeField] private AudioSource landSound;
     [SerializeField] private AudioSource stepSound1;
@@ -30,23 +34,23 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         transform.Translate(new Vector3(movementSpeed * Time.deltaTime, 0, 0));
+        
+       
     }
 
     void Update()
     {
+        groundCheck();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (_onGround)
+            if (_inInteractible && !_currentInteractable.Used)
             {
-                if (_inInteractible && !_currentInteractable.Used)
-                {
-                    _currentInteractable.Load();
-                }
-                else
-                {
-                    Jump();
-                }
-            } 
+                startLoadingInteractable();
+            }
+            else if (currentJumps < MaxJumps)
+            {
+                Jump();
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -63,7 +67,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         { 
             landSound.Play();
-            _onGround = true;
         }
         else if (other.gameObject.tag == "Interactable")
         {
@@ -73,21 +76,9 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Ground")
-        {
-            _onGround = false;
-        }
-        else if (other.gameObject.tag == "Interactable")
+        if (other.gameObject.tag == "Interactable")
         {
             _currentInteractable = null;
-        }
-    }
-
-    void OnCollisionStay2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        { 
-            _onGround = true;
         }
     }
 
@@ -109,8 +100,20 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        jumpSound.Play();
-        _rigidbody.AddForce(new Vector2(0, this._jumpForce), ForceMode2D.Impulse);
+        if (currentJumps < MaxJumps)
+        {
+            if (!justJumped && _onGround)
+            {
+                justJumped = true;
+            }
+            jumpSound.Play();
+            float jumpMultiplier = currentJumps > 0 ? 0.5f : 1f;
+            ForceMode2D mode = currentJumps > 0 ? ForceMode2D.Impulse : ForceMode2D.Impulse;
+            Debug.Log(mode);
+            Debug.Log(currentJumps);
+            _rigidbody.AddForce(new Vector2(0, this._jumpForce * jumpMultiplier), mode);
+            currentJumps = currentJumps + 1;
+        }
     }
 
     void makeStepSound()
@@ -120,6 +123,32 @@ public class PlayerController : MonoBehaviour
             AudioSource[] stepSounds = new [] {stepSound1, stepSound2};
             AudioSource stepSound = stepSounds[Random.Range(0, stepSounds.Length)];
             stepSound.Play();
+        }
+    }
+
+    void startLoadingInteractable()
+    {
+        if (_onGround)
+        {
+            _currentInteractable.Load();
+        }
+    }
+
+    void groundCheck()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(groundRay.transform.position, Vector2.down, 0.1f);
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.tag == "Ground" && !justJumped)
+            {
+                _onGround = true;
+                currentJumps = 0;
+            }
+        }
+        else
+        {
+            _onGround = false;
+            justJumped = false;
         }
     }
 
