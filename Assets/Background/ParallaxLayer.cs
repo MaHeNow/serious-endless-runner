@@ -5,17 +5,17 @@ using UnityEngine;
 public class ParallaxLayer : MonoBehaviour
 {
 
-    public Camera camera;
+    public Camera MainCamera;
     public Transform subject;
 
     Vector2 startPosition;
     float startZ;
 
-    Vector2 travel => (Vector2) camera.transform.position - startPosition;
+    Vector2 travel => (Vector2) MainCamera.transform.position - startPosition;
     
     float distanceFromSubject => transform.position.z - subject.position.z;
     
-    float parallaxFactor => 3 * Mathf.Abs(distanceFromSubject) / (camera.transform.position.z + camera.farClipPlane);
+    float parallaxFactor => 3 * Mathf.Abs(distanceFromSubject) / (MainCamera.transform.position.z + MainCamera.farClipPlane);
 
     void Start()
     {
@@ -26,7 +26,10 @@ public class ParallaxLayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 newPos = startPosition + travel * parallaxFactor;
-        transform.position = new Vector3(newPos.x, newPos.y, startZ);
+        if (MainCamera != null)
+        {
+            Vector2 newPos = startPosition + travel * parallaxFactor;
+            transform.position = new Vector3(newPos.x, newPos.y, startZ);
+        }
     }
 }
