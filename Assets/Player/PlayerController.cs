@@ -109,8 +109,6 @@ public class PlayerController : MonoBehaviour
             jumpSound.Play();
             float jumpMultiplier = currentJumps > 0 ? 0.5f : 1f;
             ForceMode2D mode = currentJumps > 0 ? ForceMode2D.Impulse : ForceMode2D.Impulse;
-            Debug.Log(mode);
-            Debug.Log(currentJumps);
             _rigidbody.AddForce(new Vector2(0, this._jumpForce * jumpMultiplier), mode);
             currentJumps = currentJumps + 1;
         }
