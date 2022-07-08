@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
     void groundCheck()
     {
-        RaycastHit2D hit = Physics2D.Raycast(groundRay.transform.position, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(groundRay.transform.position, Vector2.down, 0.1f, (1 << LayerMask.NameToLayer("Terrain")));
         if (hit.collider != null)
         {
             if (hit.collider.gameObject.tag == "Ground" && !justJumped)
