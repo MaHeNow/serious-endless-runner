@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d017cc60a78824b95bd8b4a97fb8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WarningSign: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!114 &8977542681247456340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf1724bcfbdd6f4daa25677df58cc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveAutomatically: 1
   Speed: 1.2
 --- !u!212 &8977542681247456346
 SpriteRenderer:
