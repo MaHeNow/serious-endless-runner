@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     private bool _onGround;
     private bool _inInteractible => _currentInteractable != null;
     private Interactable _currentInteractable;
+    [SerializeField] private AudioSource jumpSound;
+    [SerializeField] private AudioSource landSound;
+    [SerializeField] private AudioSource stepSound1;
+    [SerializeField] private AudioSource stepSound2;
+
 
     void Start()
     {
@@ -39,7 +44,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    _rigidbody.AddForce(new Vector2(0, this._jumpForce), ForceMode2D.Impulse);
+                    Jump();
                 }
             } 
         }
@@ -57,6 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground")
         { 
+            landSound.Play();
             _onGround = true;
         }
         else if (other.gameObject.tag == "Interactable")
@@ -98,6 +104,22 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Interactable")
         {
             _currentInteractable = null;
+        }
+    }
+
+    void Jump()
+    {
+        jumpSound.Play();
+        _rigidbody.AddForce(new Vector2(0, this._jumpForce), ForceMode2D.Impulse);
+    }
+
+    void makeStepSound()
+    {
+        if (_onGround)
+        {
+            AudioSource[] stepSounds = new [] {stepSound1, stepSound2};
+            AudioSource stepSound = stepSounds[Random.Range(0, stepSounds.Length)];
+            stepSound.Play();
         }
     }
 

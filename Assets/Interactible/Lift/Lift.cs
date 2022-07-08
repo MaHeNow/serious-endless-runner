@@ -7,6 +7,8 @@ public class Lift : Interactable
 {
     public float TransitionDuration = 1;
     private Vector3 _endPosition;
+    [SerializeField] private AudioSource appearSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class Lift : Interactable
             gameObject.transform.position = t.CurrentValue;
         };
 
+        appearSound.Play();
         gameObject.Tween("Move", transform.position, _endPosition, TransitionDuration, TweenScaleFunctions.CubicEaseInOut, updatePosition);
     }
 }

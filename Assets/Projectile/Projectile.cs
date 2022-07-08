@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<Obstacle>().Die();
             Destroy(this.gameObject);
         }
     }
