@@ -24,12 +24,12 @@ public class GameController : MonoBehaviour
     void EndGame()
     {
         Globals.score = this.ScoreManager.score;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("GameOverScene");
     }
 
     void EndGameWin()
     {
         Globals.score = this.ScoreManager.score;
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("VictoryScene");
     }
 }
