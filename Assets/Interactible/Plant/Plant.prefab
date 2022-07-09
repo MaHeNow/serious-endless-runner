@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84520185cb2c2f48b391d822dcf2fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadingTime: 1
+  LoadingTime: 0.7
   CurrentLoadingTime: 0
   Used: 0
   loadingSound: {fileID: 1759455874125033131}
