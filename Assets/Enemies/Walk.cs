@@ -18,7 +18,6 @@ public class Walk : MonoBehaviour
     public void Move()
     {
         moving = true;
-        Debug.Log("I am now walking");
     }
     
     void OnTriggerEnter2D(Collider2D other)
