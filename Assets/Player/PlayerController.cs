@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(movementSpeed * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(movementSpeed * Time.fixedDeltaTime, 0, 0));
     }
 
     void Update()
