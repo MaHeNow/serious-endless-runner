@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int MaxJumps = 2;
     private int currentJumps = 0;
     private bool justJumped = false;
-    [SerializeField] private GameObject groundRay;
+    [SerializeField] private GameObject groundRayLeft;
+    [SerializeField] private GameObject groundRayRight;
     [SerializeField] private AudioSource jumpSound;
     [SerializeField] private AudioSource landSound;
     [SerializeField] private AudioSource stepSound1;
@@ -33,9 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(new Vector3(movementSpeed * Time.deltaTime, 0, 0));
-        
-       
+        transform.Translate(new Vector3(movementSpeed * Time.fixedDeltaTime, 0, 0));
     }
 
     void Update()
@@ -134,10 +133,25 @@ public class PlayerController : MonoBehaviour
 
     void groundCheck()
     {
-        RaycastHit2D hit = Physics2D.Raycast(groundRay.transform.position, Vector2.down, 0.1f, (1 << LayerMask.NameToLayer("Terrain")));
-        if (hit.collider != null)
+        RaycastHit2D hitLeft = Physics2D.Raycast(groundRayLeft.transform.position, Vector2.down, 0.01f, (1 << LayerMask.NameToLayer("Terrain")));
+        RaycastHit2D hitRight = Physics2D.Raycast(groundRayRight.transform.position, Vector2.down, 0.01f, (1 << LayerMask.NameToLayer("Terrain")));
+        if (hitLeft.collider != null)
         {
-            if (hit.collider.gameObject.tag == "Ground" && !justJumped)
+            if (hitLeft.collider.gameObject.tag == "Ground" && !justJumped)
+            {
+                _onGround = true;
+                currentJumps = 0;
+            }
+        }
+        else
+        {
+            _onGround = false;
+            justJumped = false;
+        }
+        
+        if (hitRight.collider != null)
+        {
+            if (hitRight.collider.gameObject.tag == "Ground" && !justJumped)
             {
                 _onGround = true;
                 currentJumps = 0;

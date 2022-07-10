@@ -64,7 +64,7 @@ public class InteractableNotification : MonoBehaviour
         {
             if (!_interactable.Used)
             {
-                 _text.enabled = true;
+                _text.enabled = true;
             }
         }
     }

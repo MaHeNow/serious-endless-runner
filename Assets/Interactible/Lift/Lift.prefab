@@ -1741,7 +1741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844f43c24e2f4024683a2cf683ab8f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadingTime: 1
+  LoadingTime: 0.6
   CurrentLoadingTime: 0
   Used: 0
   loadingSound: {fileID: 9035829441205778077}
