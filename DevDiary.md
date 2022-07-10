@@ -702,5 +702,28 @@ This is how the trunk enemy and waring signs looked like:
 
 ### 4.3
 
-While implementing the double jump, we realized that our way of determining if the player is on the ground had some issues. Since we only checked if the player was touching the ground (no matter the side), it was possible to touch the edge of a platform to jump multiple times (effectively doing something like a wall climb). To circumvent that, we decided to cast 2 short rays from the bottom side of the player to detect if he is grounded:
+While implementing the double jump, we realized that our way of determining if the player is on the ground had some issues. Since we only checked if the player was touching the ground (no matter the side), it was possible to touch the edge of a platform to jump multiple times (effectively doing something like a wall climb). To circumvent that, we decided to cast 2 short rays downward from the bottom side of the player to detect if he is grounded. Next, we changed the `Jump` method so that the player can jump if the number of jumps he performed is smaller than the maximum number of jumps he can do.
 
+```cs
+void Jump()
+{
+    if (currentJumps < MaxJumps)
+    {
+        if (!justJumped && _onGround)
+        {
+            justJumped = true;
+        }
+        float jumpMultiplier = currentJumps > 0 ? 0.5f : 1f;
+        _rigidbody.AddForce(new Vector2(0, this._jumpForce * jumpMultiplier), ForceMode2D.Impulse);
+        currentJumps = currentJumps + 1;
+    }
+}
+```
+
+Touching the ground resets the `currentJumps` counter to 0.
+
+## Task 5
+
+### 5.1
+
+In order to create a sound whenever the player is jumping or falling on the ground, we added two `AudioSource` components to it and 
