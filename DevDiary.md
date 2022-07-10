@@ -2,7 +2,7 @@
 
 ## Participants
 
-Mario Nowak, 
+Mario Nowak, Alexander Zeikowski 
 
 ## Link to the game
 
