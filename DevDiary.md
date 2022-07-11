@@ -2,11 +2,11 @@
 
 ## Participants
 
-Mario Nowak, Alexander Zeikowski , Wassim Ben Salem, Ayman El Ouariachi
+Mario Nowak, Alexander Zeikowski, Wassim Ben Salem, Ayman El Ouariachi
 
 ## Link to the game
 
-
+https://play.unity.com/mg/other/jungle-runner-2
 
 ## Task 1
 
