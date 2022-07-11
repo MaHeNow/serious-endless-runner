@@ -12,7 +12,7 @@ Mario Nowak, Alexander Zeikowski , Wassim Ben Salem
 
 ### 1.1
 
-First, we created a GitHub repository to collaboratively work on the project. Next, we installed Unity Hub and created a 2D project for our game using the 2D template. We went with editor version `2020.3.35f1` as it was the one used in the lecture videos. 
+First, we created a GitHub repository to collaboratively work on the project. Next, we installed Unity Hub and created a 2D project for our game using the 2D template. We went with editor version `2021.3.4f1` as it was the one used in the lecture videos. 
 
 ### 1.2
 
