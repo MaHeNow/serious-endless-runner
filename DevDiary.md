@@ -400,10 +400,6 @@ In short, this component computes a parallax factor based on the z-coordinates o
 
 ![Parallax3DView](DevDiaryAssets/Parallax3Dview.png)
 
-After completing task two and adding the parallax background, our game looked like this:
-
-![FistShowcase](DevDiaryAssets/JungleRunnerFirstShowcase.gif)
-
 ## Task 3
 
 ### 3.1
@@ -602,10 +598,6 @@ void Update()
 
 We waited for task 5.2 before doing task 3.1.4 as we didn't have any real levels up to this point.
 
-After doing task 3.1, our game looked like this:
-
-![Interactable1](DevDiaryAssets/Interactable1.gif)
-
 ### 3.2
 
 For our second interactable we decided to go with a lift which helps the player to reach high platforms. The lift consists only of a piece of terrain constructed from tiles. Since we already created an `Interactable` base class in the last sub-task, we only need to extend that base class and override the `Activate` method:
@@ -632,9 +624,7 @@ public class Lift : Interactable
 }
 ```
 
-In order to move the lift upwards, we used a tween library we found for free in the unity asset store. The tween interpolates the lift's position from its starting position to a target position in a fixed time. This was all we needed to implement the interactable. Here's what the result looked like:
-
-![Interactable2](DevDiaryAssets/Interactable2.gif)
+In order to move the lift upwards, we used a tween library we found for free in the unity asset store. The tween interpolates the lift's position from its starting position to a target position in a fixed time. This was all we needed to implement the interactable.
 
 ## Task 4
 
@@ -691,10 +681,6 @@ Additionally, we added a new field to the `Obstacle` class, so that the appropri
 ![ObstacleWarningSign](DevDiaryAssets/ObstacleWarningSign.png)
 
 If the `WarningSignSpawner` collides with an enemy off camera, it gets the warning sign prefab of that enemy and instantiates it as a child on screen at the same height as the enemy.
-
-This is what the trunk enemy and warning signs looked like:
-
-![WarningSignShowcase](DevDiaryAssets/WarningSignShowcase.gif)
 
 ### 4.3
 
