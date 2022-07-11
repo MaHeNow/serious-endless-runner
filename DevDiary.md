@@ -2,7 +2,7 @@
 
 ## Participants
 
-Mario Nowak, Alexander Zeikowski , Wassim Ben Salem
+Mario Nowak, Alexander Zeikowski , Wassim Ben Salem, Ayman El Ouariachi
 
 ## Link to the game
 
